@@ -6,6 +6,7 @@ image_path  = 'rrice.jpg'
 image = cv2.imread(image_path)
 original_image = image
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+ret,thresh = cv2.threshold(gray, 131, 255, 0)
 
 kernal = np.ones((10, 10), np.uint8)
 thresh = cv2.erode(thresh, kernal, iterations = 1)
