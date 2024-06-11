@@ -31,6 +31,6 @@ for(i, c) in enumerate(sorted_contours):
     #             thinkness=2, lineType=cv2.LINE_AA)
     print(i)
 plt.subplot(1, 2, 2),plt.imshow(image)
-plt.title('Couting'), plt.xticks([]), plt.yticks([])
+plt.title('Counting'), plt.xticks([]), plt.yticks([])
 plt.show()
 
