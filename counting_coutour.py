@@ -15,3 +15,21 @@ thresh =  cv2.erode(thresh, kernal, iterations = 1)
 
 contour, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 sorted_contours = sorted(contour, key=cv2.contourArea, reverse=False)
+
+plt.subplot(1,2,1),plt.imshow(thresh)
+plt.title("Edge Detection"), plt.xticks([]), plt.yticks([])
+for(i, c) in enumerate(sorted_contours):
+    M = cv2.moments(c)
+    cx = int(M['m10'] / M['m00'])
+    cy = int(M['m01'] / M['m00'])
+    cv2.putText(image, text=str(i + 1), org=(cx, cy),
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1,
+                    color=(0, 255, 0), thickness=2, lineType=cv2.LINE_AA)
+    # cv2.putText(image, text=str(i + 1), org=(cx, cy),
+    #             fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 0),
+    #             thinkness=2, lineType=cv2.LINE_AA)
+    print(i)
+plt.subplot(1, 2, 2),plt.imshow(image)
+plt.title('Couting'), plt.xticks([]), plt.yticks([])
+plt.show()
+
